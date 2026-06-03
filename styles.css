@@ -1,3 +1,10 @@
+@font-face {
+  font-family: "ELMS SANS";
+  src: url("ElmsSans-VariableFont_wght.ttf") format("truetype");
+  font-weight: 100 900;
+  font-style: normal;
+}
+
 :root {
   --bg: #f4efe6;
   --bg-strong: #e7dccb;
@@ -22,7 +29,7 @@ html {
 
 body {
   margin: 0;
-  font-family: "Inter", system-ui, sans-serif;
+  font-family: "ELMS SANS", "Inter", system-ui, sans-serif;
   color: var(--text);
   background:
     radial-gradient(circle at top left, rgba(15, 124, 138, 0.16), transparent 30%),
@@ -142,7 +149,7 @@ a {
 .hero-copy h1,
 .section-intro h2,
 .cta-section h2 {
-  font-family: "Fraunces", Georgia, serif;
+  font-family: "ELMS SANS", "Inter", system-ui, sans-serif;
   line-height: 0.98;
   letter-spacing: -0.03em;
   margin: 0;
@@ -382,7 +389,7 @@ a {
 
 .trust-number {
   display: block;
-  font-family: "Fraunces", Georgia, serif;
+  font-family: "ELMS SANS", "Inter", system-ui, sans-serif;
   font-size: 2.3rem;
   color: var(--accent-strong);
   margin-bottom: 8px;
