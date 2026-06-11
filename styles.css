@@ -601,3 +601,13 @@ a {
     border-radius: 22px;
   }
 }
+
+.site-footer {
+  margin-top: 48px;
+  padding-top: 24px;
+  border-top: 1px solid var(--line);
+  text-align: center;
+  color: var(--muted);
+  font-size: 0.9rem;
+}
+
