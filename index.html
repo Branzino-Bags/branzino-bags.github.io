@@ -158,21 +158,103 @@
           </div>
         </section>
 
-        <section class="cta-section" id="kontakt">
-          <div>
+        <section class="contact-section" id="kontakt">
+          <div class="section-intro">
             <p class="eyebrow">Kontakt</p>
-            <h2>Wenn ihr eure alten Segel sinnvoll weitergeben wollt, sprechen wir über euer Projekt.</h2>
-            <p>
-              Ob kleine Serie für den Nachwuchs oder Sonderedition für den ganzen Club:
-              Wir helfen euch, daraus eine Lösung mit Wirkung zu machen.
-            </p>
+            <h2>Sagt uns, was ihr habt – wir machen Euch ein Angebot!</h2>
           </div>
-          <div class="cta-box">
-            <a class="button button-primary button-full" href="mailto:oskar.kraak@uni-a.de?subject=Anfrage%20f%C3%BCr%20Segelverein">E-Mail senden</a>
-            <p>
-              Alternativ per E-Mail mit Angaben zu Verein, ungefährer Segelmenge und gewünschter Stückzahl.
-            </p>
-          </div>
+
+          <form class="contact-form">
+            <div class="form-row">
+              <div class="form-group">
+                <label for="cf-name">Name</label>
+                <input type="text" id="cf-name" name="name" placeholder="Max Mustermann" required />
+              </div>
+              <div class="form-group">
+                <label for="cf-verein">Segelverein</label>
+                <input type="text" id="cf-verein" name="verein" placeholder="z.B. Segelclub Bodensee e.V." />
+              </div>
+            </div>
+
+            <fieldset class="form-fieldset">
+              <legend>Eure Segel</legend>
+              <div class="form-row">
+                <div class="form-group">
+                  <label for="cf-anzahl-segel">Anzahl Segel</label>
+                  <input type="number" id="cf-anzahl-segel" name="anzahl_segel" min="1" placeholder="z.B. 3" />
+                </div>
+                <div class="form-group">
+                  <label for="cf-flaeche">Gesamtfläche (m²)</label>
+                  <input type="number" id="cf-flaeche" name="flaeche" min="1" placeholder="z.B. 45" />
+                </div>
+              </div>
+              <div class="form-row">
+                <div class="form-group">
+                  <label for="cf-zustand">Zustand</label>
+                  <select id="cf-zustand" name="zustand">
+                    <option value="">Bitte auswählen</option>
+                    <option>Sehr gut</option>
+                    <option>Gebraucht</option>
+                    <option>Stark abgenutzt</option>
+                  </select>
+                </div>
+                <div class="form-group">
+                  <label for="cf-material">Material</label>
+                  <select id="cf-material" name="material">
+                    <option value="">Bitte auswählen</option>
+                    <option>Dacron / Polyester</option>
+                    <option>Mylar / Folie</option>
+                    <option>Karbon</option>
+                    <option>Tyvek</option>
+                    <option>Weiß ich nicht</option>
+                    <option>Sonstiges</option>
+                  </select>
+                </div>
+              </div>
+            </fieldset>
+
+            <div class="form-group">
+              <label for="cf-taschen">Gewünschte Taschenanzahl (ca.)</label>
+              <input type="number" id="cf-taschen" name="anzahl_taschen" min="1" placeholder="z.B. 20" />
+            </div>
+
+            <fieldset class="form-fieldset">
+              <legend>Personalisierung</legend>
+              <div class="checkbox-group">
+                <label class="checkbox-label">
+                  <input type="checkbox" name="personalisierung" value="bedruckung" />
+                  Bedruckung / Vereinslogo
+                </label>
+                <label class="checkbox-label">
+                  <input type="checkbox" name="personalisierung" value="innentasche" />
+                  Innentasche
+                </label>
+                <label class="checkbox-label">
+                  <input type="checkbox" name="personalisierung" value="schluessel" />
+                  Schlüsselring
+                </label>
+                <label class="checkbox-label">
+                  <input type="checkbox" name="personalisierung" value="label" />
+                  Namenslabel
+                </label>
+                <label class="checkbox-label">
+                  <input type="checkbox" name="personalisierung" value="farbe" />
+                  Farbwahl Streifen
+                </label>
+              </div>
+              <div class="form-group">
+                <label for="cf-sonstiges">Weitere Wünsche</label>
+                <textarea id="cf-sonstiges" name="sonstiges" rows="3" placeholder="Beschreibt weitere Individualisierungen oder Fragen …"></textarea>
+              </div>
+            </fieldset>
+
+            <button type="submit" class="button button-primary">Anfrage senden</button>
+          </form>
+
+          <p class="contact-alt">
+            Oder schick uns eine allgemeine Anfrage
+            <a href="mailto:oskar.kraak@uni-a.de">per E-Mail</a>
+          </p>
         </section>
       </main>
 
@@ -180,5 +262,40 @@
         <p><strong>Impressum:</strong> Adrian Meyer, Louis Hassler, Oskar Kraak, Tim Gust GbR</p>
       </footer>
     </div>
+  <script>
+    document.querySelector('.contact-form').addEventListener('submit', function (e) {
+      e.preventDefault();
+
+      const get = id => document.getElementById(id).value.trim();
+      const name       = get('cf-name');
+      const verein     = get('cf-verein');
+      const anzSegel   = get('cf-anzahl-segel');
+      const flaeche    = get('cf-flaeche');
+      const zustand    = get('cf-zustand');
+      const material   = get('cf-material');
+      const taschen    = get('cf-taschen');
+      const sonstiges  = get('cf-sonstiges');
+
+      const checked = [...document.querySelectorAll('input[name="personalisierung"]:checked')]
+        .map(el => el.closest('label').textContent.trim());
+
+      const lines = [];
+      lines.push(`Name: ${name}`);
+      if (verein)    lines.push(`Verein: ${verein}`);
+      lines.push('');
+      lines.push('Segel:');
+      if (anzSegel)  lines.push(`  Anzahl: ${anzSegel}`);
+      if (flaeche)   lines.push(`  Gesamtfläche: ${flaeche} m²`);
+      if (zustand)   lines.push(`  Zustand: ${zustand}`);
+      if (material)  lines.push(`  Material: ${material}`);
+      if (taschen)   lines.push(`Gewünschte Taschenanzahl: ca. ${taschen}`);
+      if (checked.length) lines.push(`Personalisierung: ${checked.join(', ')}`);
+      if (sonstiges) lines.push(`Weitere Wünsche: ${sonstiges}`);
+
+      const subject = `Taschenanfrage - ${verein || name}`;
+      window.location.href =
+        `mailto:oskar.kraak@uni-a.de?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(lines.join('\n'))}`;
+    });
+  </script>
   </body>
 </html>
