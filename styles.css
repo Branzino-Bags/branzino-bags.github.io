@@ -31,10 +31,7 @@ body {
   margin: 0;
   font-family: "ELMS SANS", "Inter", system-ui, sans-serif;
   color: var(--text);
-  background:
-    radial-gradient(circle at top left, rgba(25, 118, 210, 0.16), transparent 30%),
-    radial-gradient(circle at top right, rgba(211, 47, 47, 0.14), transparent 24%),
-    linear-gradient(180deg, #fcfaf6 0%, var(--bg) 45%, #f8f3eb 100%);
+  background: url("images/TAU%20Background%20Wave%20SkyBlue.png") center center / cover fixed;
 }
 
 body::before {
