@@ -388,8 +388,7 @@ section[id] {
 }
 
 .feature-card h3,
-.step h3,
-.product-copy .spec-list li {
+.step h3 {
   margin: 0 0 10px;
 }
 
@@ -413,13 +412,35 @@ section[id] {
   align-items: center;
 }
 
+.product-copy {
+  padding: 12px 8px;
+}
+
 .spec-list {
+  list-style: none;
   margin: 0;
-  padding-left: 20px;
+  padding: 0;
   display: grid;
-  gap: 12px;
+  gap: 18px;
   line-height: 1.6;
   color: var(--muted);
+}
+
+.spec-list li {
+  position: relative;
+  padding-left: 24px;
+}
+
+.spec-list li::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0.55em;
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: var(--accent-warm);
+  box-shadow: 0 0 0 6px rgba(211, 47, 47, 0.12);
 }
 
 .product-sample {
@@ -563,8 +584,7 @@ section[id] {
   .trust-band,
   .feature-cards,
   .steps,
-  .product-panel,
-  .cta-section {
+  .product-panel {
     grid-template-columns: 1fr;
   }
 
