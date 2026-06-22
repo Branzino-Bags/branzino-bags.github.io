@@ -128,6 +128,11 @@ a {
   font-weight: 600;
 }
 
+main[id],
+section[id] {
+  scroll-margin-top: 100px;
+}
+
 .hero {
   display: grid;
   grid-template-columns: 1.1fr 0.9fr;
